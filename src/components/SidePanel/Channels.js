@@ -26,6 +26,9 @@ class Channels extends React.Component {
 
   componentWillUnmount() {
     this.removeListeners();
+    this.state.channels.forEach(channel => {
+      this.state.messagesRef.child(channel.id).off();
+    })
   }
 
   addListeners = () => {
